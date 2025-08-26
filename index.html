@@ -32,8 +32,8 @@
     a { color: var(--brand); text-decoration: none }
     a:hover { text-decoration: underline }
 
-    /* HERO (title inside banner) */
-    .hero{
+    /* Hero leaves enough room for the overlapped row */
+    .hero {
       background:
         linear-gradient(rgba(114,112,113,0.55), rgba(114,112,113,0.35)),
         url('./background.jpg') center center / cover no-repeat;
@@ -42,206 +42,167 @@
       align-items: center;
       justify-content: center;
       text-align: center;
-      margin-bottom: 84px; /* space for the overlapping avatar */
+      margin-bottom: 140px; /* space below hero */
+      position: relative;
     }
     .hero h1{
-      color:#fff;
-      font-size:3rem;
-      font-weight:700;
-      letter-spacing:.5px;
-      margin:0;
-      text-shadow:0 2px 10px rgba(0,0,0,.65);
-    }
-    
-    /* Header: column layout, centered */
-    header{
-      display:flex;
-      flex-direction:column;
-      align-items:center;
-      gap:14px;
-      margin:-120px 0 28px; /* overlap hero with avatar */
-    }
-    
-    /* Overlapping profile photo – centered */
-    header img{
-      width: 250px;
-      height: 250px;
-      border-radius: 50%;
-      object-fit: cover;
-      object-position: center;
-      border: 2px solid #fff;
-      box-shadow: 0 10px 24px rgba(0,0,0,.22);
-      background:#fff;
-    }
-    
-    /* Name area */
-    .title{
-      text-align:center;
-      max-width: 920px;
-    }
-    .title h1{
-      font-size: 1.9rem;
-      margin: 0;
-      line-height: 1.2;
-      color: var(--ink);
+      color:#fff; font-size:3rem; font-weight:700; letter-spacing:.5px;
+      margin:0; text-shadow:0 2px 10px rgba(0,0,0,.65);
     }
 
-    /* NEW: Research tags (apple green + larger) */
+    /* Row container for photo + tags (sits on the seam) */
+    .header-row {
+      display: flex; align-items: center; justify-content: center;
+      gap: 24px;
+      position: absolute; bottom: -70px; left: 50%;
+      transform: translateX(-50%);
+      padding: 0 16px; /* guard against edge on very small screens */
+    }
+
+    /* Avatar */
+    .header-row img {
+      width: 160px; height: 160px; border-radius: 50%;
+      object-fit: cover; border: 3px solid #fff;
+      box-shadow: 0 8px 22px rgba(0,0,0,.25);
+      background:#fff; z-index: 2;
+    }
+
+    /* Research tags */
     .research-tags {
-      text-align: center;
-      font-size: 1.3rem;   /* bigger font */
-      font-weight: 500;
-      color: #77a106;      /* your apple green */
-      margin-top: -20px;   /* pulls closer to photo */
+      color: #77a106; font-size: 1.25rem; font-weight: 700;
+      letter-spacing: .3px; white-space: nowrap;
     }
+    .research-left, .research-right { flex: 1; text-align: center; }
 
-    
-    /* Links row: symmetric, centered, even spacing */
+    /* Links row: centered, even spacing */
+    .links-wrap { margin-top: 14px; }
     .links{
-      display:grid;
-      grid-auto-flow: column;
-      grid-auto-columns: minmax(160px, auto); /* equal-ish chip widths */
-      gap:12px;
-      justify-content:center;
+      display:grid; grid-auto-flow: column;
+      grid-auto-columns: minmax(160px, auto);
+      gap:12px; justify-content:center;
     }
     .chip{
-      display:inline-flex;
-      justify-content:center; /* text/icon centered inside chip */
-      align-items:center;
-      gap:8px;
-      padding:10px 14px;
-      border-radius:999px;
-      background: var(--chip);
-      color: #122; /* good contrast on green chips */
-      border: 1px solid var(--outline);
-    }
-    
-    /* Sections */
-    .grid{ display:grid; grid-template-columns:1fr; gap:32px }
-    section{
-      background: var(--card);
-      border: 1px solid var(--outline);
-      border-radius: 14px;
-      padding: 24px 24px 20px;
-      box-shadow: 0 2px 0 rgba(0,0,0,0.04);
-    }
-    section h2{
-      margin: 0 0 12px;
-      font-size: 1.25rem;
-      letter-spacing:.2px;
-      color: var(--brand);
+      display:inline-flex; justify-content:center; align-items:center;
+      gap:8px; padding:10px 14px; border-radius:999px;
+      background: var(--chip); color: #122; border: 1px solid var(--outline);
     }
 
-    /* Narrow reading column for readability */
-    .narrow {
-      max-width: 860px;
-      margin: 0 auto;
-      line-height: 1.75;
+    /* Sections */
+    section{
+      background: var(--card); border: 1px solid var(--outline);
+      border-radius: 14px; padding: 24px 24px 20px;
+      box-shadow: 0 2px 0 rgba(0,0,0,0.04);
     }
+    section h2{ margin:0 0 12px; font-size:1.25rem; letter-spacing:.2px; color:var(--brand) }
+
+    /* Narrow reading column for readability (you can widen here) */
+    .narrow { max-width: 860px; margin: 0 auto; line-height: 1.75; }
 
     /* Buttons */
     .btnrow{ display:flex; flex-wrap:wrap; gap:10px; margin-top:10px }
     .btn{
       display:inline-flex; align-items:center; gap:8px;
-      background: var(--accent);
-      border: 1px solid #c9df5f;
-      color: #25330a;
+      background: var(--accent); border: 1px solid #c9df5f; color: #25330a;
       border-radius: 10px; padding: 10px 14px; text-decoration:none;
       box-shadow: 0 1px 0 rgba(0,0,0,0.06);
     }
     .btn:hover{ filter: brightness(0.97) }
-    
+
     /* Mobile tweaks */
-    @media (max-width: 768px){
-      .hero{ height: 260px; margin-bottom: 72px }
-      header{ margin-top: -100px }
-      header img{ width: 140px; height: 140px }
-      .title h1{ font-size: 1.6rem }
+    @media (max-width: 900px){
+      .hero{ height: 260px; margin-bottom: 120px }
+      .header-row{ bottom: -60px; gap: 12px }
+      .header-row img{ width:120px; height:120px }
+      .research-tags{ font-size: 1.05rem; white-space: normal }
+      .research-left, .research-right{ flex: 1; }
       .links{ grid-auto-columns: minmax(140px, auto) }
-      .research-tags{ font-size: 1.1rem }
     }
   </style>
 </head>
 
 <body>
-  <!-- HERO with embedded title -->
   <div class="hero">
     <h1>Alma C. Castañeda-Leautaud</h1>
+
+    <!-- photo + tags on the seam -->
+    <div class="header-row">
+      <div class="research-tags research-left">
+        Drug-Design · Graph-Neural-Networks
+      </div>
+
+      <img src="./photo.jpg" alt="Profile photo" />
+
+      <div class="research-tags research-right">
+        Free Energy Calculations · Enhanced Molecular Simulations
+      </div>
+    </div>
   </div>
 
-  <div class="wrap">
-  <header>
-    <img src="./photo.jpg" alt="Profile photo" />
-    
-    <div class="research-tags">
-      Drug-Design · Graph-Neural-Networks · Free Energy Calculations · Enhanced Molecular Simulations
-    </div>
-  
+  <!-- nav chips below the seam -->
+  <div class="links-wrap">
     <nav class="links">
       <a class="chip" href="mailto:acastanedaleautaud@ucsd.edu">acastanedaleautaud@ucsd.edu</a>
-      <a class="chip" href="https://github.com/chemdesign-accl" target="_blank">GitHub</a>
-      <a class="chip" href="https://www.linkedin.com/in/alma-c-castañeda-leautaud-8556021a9" target="_blank">LinkedIn</a>
+      <a class="chip" href="https://github.com/chemdesign-accl" target="_blank" rel="noopener">GitHub</a>
+      <a class="chip" href="https://www.linkedin.com/in/alma-c-castañeda-leautaud-8556021a9" target="_blank" rel="noopener">LinkedIn</a>
       <a class="chip" href="./publications.html">📚 Publications</a>
       <a class="chip" href="./SoP.html">Statement of Purpose</a>
     </nav>
-  </header>
-
-
-    <div class="narrow">
-      <section>
-        <h2>About Me</h2>
-        <div class="item">
-          <p>
-            Hi, welcome to my web-page! I am a <span style="color: var(--ink); font-weight:600;">Ph.D. candidate in Chemistry</span> (Theoretical and Computational Track) at 
-            <span style="color: var(--ink); font-weight:600;">UC San Diego</span>, I currently work at the 
-            <span style="color: var(--ink); font-weight:600;">Amaro Lab</span> specializing in computational approaches for 
-            <span style="color: var(--ink); font-weight:600;">drug discovery</span>. My work is driven by a motivation to design safer and more effective 
-            therapeutics for conditions that historically lack adequate treatments. For instance, during my Master’s research I proposed a derivative of a commercial antipsychotic aimed at reducing the 
-            cardiometabolic side effects often associated with schizophrenia medications.
-          </p>
-          <p>
-            My current research integrates <span style="color: var(--ink); font-weight:600;">Deep Learning (DL)</span> and 
-            <span style="color: var(--ink); font-weight:600;">Molecular Simulations</span> to accelerate antiviral discovery. I develop new 
-            <span style="color: var(--ink); font-weight:600;">graph-based neural networks (GNNs)</span>, specifically 
-            <span style="color: var(--ink); font-weight:600;">message-passing neural networks (MPNNs)</span> for molecular and atom-level predictions, with a focus on identifying and optimizing inhibitors of the 
-            <span style="color: var(--ink); font-weight:600;">SARS-CoV-2 NSP13 helicase</span>. I am also interested in large-scale exploration of 
-            <span style="color: var(--ink); font-weight:600;">chemical space</span>, both to understand its diversity and to adapt DL models for broader predictive power.
-          </p>
-          <p>
-            Beyond machine learning, I apply <span style="color: var(--ink); font-weight:600;">enhanced molecular simulations</span>, including 
-            <span style="color: var(--ink); font-weight:600;">metadynamics</span>, 
-            <span style="color: var(--ink); font-weight:600;">Gaussian-accelerated dynamics</span>, and 
-            <span style="color: var(--ink); font-weight:600;">free-energy calculations</span>, to probe biomolecular mechanisms with high accuracy. My Ph.D. thesis focuses on understanding how the SARS-CoV-2 helicase translocates RNA using nucleoside triphosphates (NTPs), and on developing strategies to inhibit this essential viral process.
-          </p>
-          <p>
-            Earlier in my career, I conducted in vitro studies on plant viruses, exploring how icosahedral viruses can be engineered as 
-            <span style="color: var(--ink); font-weight:600;">nanocapsids</span> for targeted 
-            <span style="color: var(--ink); font-weight:600;">drug delivery</span>.
-          </p>
-        </div>
-      </section>
-
-      <section>
-        <h2>News</h2>
-        <ul class="tight">
-          <li>📢 [Aug 2025] Speaker at ACS Spring Meeting (San Diego)</li>
-          <li>🧠 [Jul 2025] Preprint on interpretable GNNs submitted to Digital Discovery</li>
-          <li>💊 [Jun 2025] Experimental validation of MWAC-3429 shows sub-µM potency</li>
-        </ul>
-      </section>
-
-      <section>
-        <h2>View CV</h2>
-        <div class="btnrow">
-          <a class="btn" href="./Alma_CV.pdf" target="_blank">Open CV in new tab</a>
-          <a class="btn" href="./Alma_CV.pdf" download>Download PDF</a>
-        </div>
-      </section>
-    </div>
-
-    <footer class="muted" style="margin-top: 26px">
-      © <script>document.write(new Date().getFullYear())</script> Alma C. Castañeda-Leautaud · Built with GitHub Pages
-    </footer>
   </div>
+
+  <div class="narrow">
+    <section>
+      <h2>About Me</h2>
+      <div class="item">
+        <p>
+          Hi, welcome to my web-page! I am a <span style="color: var(--ink); font-weight:600;">Ph.D. candidate in Chemistry</span> (Theoretical and Computational Track) at 
+          <span style="color: var(--ink); font-weight:600;">UC San Diego</span>, I currently work at the 
+          <span style="color: var(--ink); font-weight:600;">Amaro Lab</span> specializing in computational approaches for 
+          <span style="color: var(--ink); font-weight:600;">drug discovery</span>. My work is driven by a motivation to design safer and more effective 
+          therapeutics for conditions that historically lack adequate treatments. For instance, during my Master’s research I proposed a derivative of a commercial antipsychotic aimed at reducing the 
+          cardiometabolic side effects often associated with schizophrenia medications.
+        </p>
+        <p>
+          My current research integrates <span style="color: var(--ink); font-weight:600;">Deep Learning (DL)</span> and 
+          <span style="color: var(--ink); font-weight:600;">Molecular Simulations</span> to accelerate antiviral discovery. I develop new 
+          <span style="color: var(--ink); font-weight:600;">graph-based neural networks (GNNs)</span>, specifically 
+          <span style="color: var(--ink); font-weight:600;">message-passing neural networks (MPNNs)</span> for molecular and atom-level predictions, with a focus on identifying and optimizing inhibitors of the 
+          <span style="color: var(--ink); font-weight:600;">SARS-CoV-2 NSP13 helicase</span>. I am also interested in large-scale exploration of 
+          <span style="color: var(--ink); font-weight:600;">chemical space</span>, both to understand its diversity and to adapt DL models for broader predictive power.
+        </p>
+        <p>
+          Beyond machine learning, I apply <span style="color: var(--ink); font-weight:600;">enhanced molecular simulations</span>, including 
+          <span style="color: var(--ink); font-weight:600;">metadynamics</span>, 
+          <span style="color: var(--ink); font-weight:600;">Gaussian-accelerated dynamics</span>, and 
+          <span style="color: var(--ink); font-weight:600;">free-energy calculations</span>, to probe biomolecular mechanisms with high accuracy. My Ph.D. thesis focuses on understanding how the SARS-CoV-2 helicase translocates RNA using nucleoside triphosphates (NTPs), and on developing strategies to inhibit this essential viral process.
+        </p>
+        <p>
+          Earlier in my career, I conducted in vitro studies on plant viruses, exploring how icosahedral viruses can be engineered as 
+          <span style="color: var(--ink); font-weight:600;">nanocapsids</span> for targeted 
+          <span style="color: var(--ink); font-weight:600;">drug delivery</span>.
+        </p>
+      </div>
+    </section>
+
+    <section>
+      <h2>News</h2>
+      <ul class="tight">
+        <li>📢 [Aug 2025] Speaker at ACS Spring Meeting (San Diego)</li>
+        <li>🧠 [Jul 2025] Preprint on interpretable GNNs submitted to Digital Discovery</li>
+        <li>💊 [Jun 2025] Experimental validation of MWAC-3429 shows sub-µM potency</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>View CV</h2>
+      <div class="btnrow">
+        <a class="btn" href="./Alma_CV.pdf" target="_blank" rel="noopener">Open CV in new tab</a>
+        <a class="btn" href="./Alma_CV.pdf" download>Download PDF</a>
+      </div>
+    </section>
+  </div>
+
+  <footer class="muted" style="margin-top: 26px">
+    © <script>document.write(new Date().getFullYear())</script> Alma C. Castañeda-Leautaud · Built with GitHub Pages
+  </footer>
 </body>
 </html>
