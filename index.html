@@ -87,15 +87,14 @@
     }
 
     /* NEW: Research tags (apple green + larger) */
-    .research-tags{
-      color: #77A106;
-      font-size: 1.25rem;
-      font-weight: 700;
-      letter-spacing: .3px;
-      margin: 8px 0 6px;
+    .research-tags {
       text-align: center;
-      text-wrap: balance;
+      font-size: 1.3rem;   /* bigger font */
+      font-weight: 500;
+      color: #77a106;      /* your apple green */
+      margin-top: -20px;   /* pulls closer to photo */
     }
+
     
     /* Links row: symmetric, centered, even spacing */
     .links{
@@ -135,7 +134,7 @@
 
     /* Narrow reading column for readability */
     .narrow {
-      max-width: 720px;
+      max-width: 860px;
       margin: 0 auto;
       line-height: 1.75;
     }
@@ -171,24 +170,22 @@
   </div>
 
   <div class="wrap">
-    <header>
-      <img src="./photo.jpg" alt="Profile photo" />
-      <div class="title">
-        <div class="research-tags">
-          Drug-Design · Graph-Neural-Networks · Free Energy Calculations · Enhanced Molecular Simulations
-        </div>
-      </div>
+  <header>
+    <img src="./photo.jpg" alt="Profile photo" />
+    
+    <div class="research-tags">
+      Drug-Design · Graph-Neural-Networks · Free Energy Calculations · Enhanced Molecular Simulations
+    </div>
+  
+    <nav class="links">
+      <a class="chip" href="mailto:acastanedaleautaud@ucsd.edu">acastanedaleautaud@ucsd.edu</a>
+      <a class="chip" href="https://github.com/chemdesign-accl" target="_blank">GitHub</a>
+      <a class="chip" href="https://www.linkedin.com/in/alma-c-castañeda-leautaud-8556021a9" target="_blank">LinkedIn</a>
+      <a class="chip" href="./publications.html">📚 Publications</a>
+      <a class="chip" href="./SoP.html">Statement of Purpose</a>
+    </nav>
+  </header>
 
-      <nav class="links">
-        <a class="chip" href="mailto:acastanedaleautaud@ucsd.edu" aria-label="Email">
-          acastanedaleautaud@ucsd.edu
-        </a>
-        <a class="chip" href="https://github.com/chemdesign-accl" target="_blank">GitHub</a>
-        <a class="chip" href="https://www.linkedin.com/in/alma-c-castañeda-leautaud-8556021a9" target="_blank">LinkedIn</a>
-        <a class="chip" href="./publications.html">📚 Publications</a>
-        <a class="chip" href="./SoP.html">Statement of Purpose</a>
-      </nav>
-    </header>
 
     <div class="narrow">
       <section>
