@@ -32,19 +32,17 @@
 
     a { color: var(--brand); text-decoration: none }
     a:hover { text-decoration: underline }
-
-    /* HERO (title inside banner) */
+    /* HERO (title inside banner) – unchanged except for spacing below */
     .hero{
-      /* gradient overlay improves legibility over photo */
       background:
-        linear-gradient(rgba(0,0,0,0.35), rgba(0,0,0,0.25)),
+        linear-gradient(rgba(114,112,113,0.55), rgba(114,112,113,0.35)),
         url('./background.jpg') center center / cover no-repeat;
       height: 320px;
-      width: 100%;
       display: flex;
       align-items: center;
       justify-content: center;
       text-align: center;
+      margin-bottom: 84px; /* space for the overlapping avatar */
     }
     .hero h1{
       color:#fff;
@@ -54,91 +52,98 @@
       margin:0;
       text-shadow:0 2px 10px rgba(0,0,0,.65);
     }
-
-    .wrap { max-width: 1280px; margin: 0 auto; padding: 0 16px 64px }
-
-    header {
-      display: flex;
-      flex-wrap: wrap;
-      align-items: center;
-      gap: 18px;
-      margin: -72px 0 24px; /* pulls header up to overlap the hero */
+    
+    /* Header: column layout, centered */
+    header{
+      display:flex;
+      flex-direction:column;
+      align-items:center;
+      gap:14px;
+      margin:-120px 0 28px; /* overlap hero with avatar */
     }
-
-    /* Overlapping profile photo */
-    header img {
+    
+    /* Overlapping profile photo – centered */
+    header img{
       width: 200px;
       height: 200px;
       border-radius: 50%;
       object-fit: cover;
+      object-position: center;
       border: 4px solid #fff;
       box-shadow: 0 10px 24px rgba(0,0,0,.22);
-      background:#fff; /* prevents edge halos */
+      background:#fff;
     }
-
-    .title { flex: 1 1 520px }
-    h1 { font-size: 2rem; line-height: 1.15; margin: 0 }
-    .subtitle { color: var(--muted); margin-top: 6px }
-
-    .links {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 12px;
+    
+    /* Name + subtitle centered */
+    .title{
+      text-align:center;
+      max-width: 920px;
     }
-
-    .chip {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      padding: 8px 12px;
-      border-radius: 999px;
+    .title h1{
+      font-size: 1.9rem;
+      margin: 0;
+      line-height: 1.2;
+      color: var(--ink);
+    }
+    .subtitle{ color: var(--muted); margin-top: 6px }
+    
+    /* Links row: symmetric, centered, even spacing */
+    .links{
+      display:grid;
+      grid-auto-flow: column;
+      grid-auto-columns: minmax(160px, auto); /* equal-ish chip widths */
+      gap:12px;
+      justify-content:center;
+    }
+    .chip{
+      display:inline-flex;
+      justify-content:center; /* text/icon centered inside chip */
+      align-items:center;
+      gap:8px;
+      padding:10px 14px;
+      border-radius:999px;
       background: var(--chip);
-      color: #3b2a21;
+      color: #122; /* good contrast on green chips */
       border: 1px solid var(--outline);
     }
-    .chip svg { width: 16px; height: 16px; opacity:.9 }
-
-    .grid { display: grid; grid-template-columns: 1fr; gap: 32px }
-
-    section {
+    
+    /* Sections */
+    .grid{ display:grid; grid-template-columns:1fr; gap:32px }
+    section{
       background: var(--card);
       border: 1px solid var(--outline);
       border-radius: 14px;
       padding: 24px 24px 20px;
       box-shadow: 0 2px 0 rgba(0,0,0,0.04);
     }
-
-    section h2 {
+    section h2{
       margin: 0 0 12px;
       font-size: 1.25rem;
       letter-spacing:.2px;
-      color: #7b4c30; /* warm heading tone */
+      color: var(--brand);
     }
-
-    .item { margin: 10px 0 8px }
-    ul.tight { margin: 6px 0 0 1.1em; padding: 0 }
-    ul.tight li { margin: 6px 0 }
-
-    .btnrow { display:flex; flex-wrap:wrap; gap:10px; margin-top:10px }
-
-    .btn {
-      display: inline-flex; align-items:center; gap:8px;
+    
+    /* Buttons */
+    .btnrow{ display:flex; flex-wrap:wrap; gap:10px; margin-top:10px }
+    .btn{
+      display:inline-flex; align-items:center; gap:8px;
       background: var(--accent);
-      border: 1px solid #e9b56b;
-      color: #3b210f;
+      border: 1px solid #c9df5f;
+      color: #25330a;
       border-radius: 10px; padding: 10px 14px; text-decoration:none;
       box-shadow: 0 1px 0 rgba(0,0,0,0.06);
     }
-    .btn:hover { filter: brightness(0.97) }
-    .muted { color: var(--muted) }
-
+    .btn:hover{ filter: brightness(0.97) }
+    
+    /* Mobile tweaks */
     @media (max-width: 768px){
-      .hero{ height: 260px }
-      .hero h1{ font-size: 2.2rem }
-      header{ margin-top: -60px }
+      .hero{ height: 260px; margin-bottom: 72px }
+      header{ margin-top: -100px }
       header img{ width: 140px; height: 140px }
-      h1{ font-size:1.6rem }
+      .title h1{ font-size: 1.6rem }
+      .links{ grid-auto-columns: minmax(140px, auto) }
     }
+
   </style>
 </head>
 
