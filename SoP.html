@@ -34,8 +34,11 @@
 
     /* === split layout === */
     .sop{
-      display:grid;grid-template-columns: minmax(280px, 42%) 1fr; gap:24px;
+      display:grid;
+      grid-template-columns: 40% 60%; /* narrower image, wider text */
+      gap:24px;
     }
+
     /* left: image column with sticky hero */
     .art{
       position:sticky; top:20px; height:calc(100vh - 40px);
