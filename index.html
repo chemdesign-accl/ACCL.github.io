@@ -11,15 +11,15 @@
 
   <style>
     :root {
-      /* === TODO: Theme colors === */
-      --bg: #0b0e14;
-      --card: #121826;
-      --muted: #98a2b3;
-      --ink: #e6edf3;
-      --brand: #60a5fa;
-      --accent: #34d399;
-      --chip: #1f2937;
+      --bg: #f2e9e1;       /* Light background */
+      --card: #2f3a56;     /* Deep blue for cards */
+      --muted: #f4978e;    /* Coral for subtitles */
+      --ink: #2f3a56;      /* Dark navy for text */
+      --brand: #8cc4e0;    /* Sky blue for links */
+      --accent: #f6c667;   /* Yellow for highlights/buttons */
+      --chip: #f4978e;     /* Coral pink for chip-style navs */
     }
+
 
     * { box-sizing: border-box }
     html, body {
@@ -27,14 +27,16 @@
       height: 100%;
       background: var(--bg);
       color: var(--ink);
-      font: 16px/1.6 'Inter', sans-serif;
+      font: 18px/1.75 'Inter', sans-serif;
     }
 
     a { color: var(--brand); text-decoration: none }
     a:hover { text-decoration: underline }
 
-    .wrap { max-width: 980px; margin: 0 auto; padding: 28px 16px 64px }
-
+    .wrap { max-width: 1280px; margin: 0 auto; padding: 28px 16px 64px }
+    .grid {
+      gap: 32px;
+    }
     header {
       display: flex;
       flex-wrap: wrap;
@@ -44,8 +46,8 @@
     }
 
     header img {
-      width: 100px;
-      height: 100px;
+      width: 240px;
+      height: 240px;
       border-radius: 50%;
       object-fit: cover;
     }
