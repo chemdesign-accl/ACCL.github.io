@@ -12,14 +12,13 @@
     :root {
       --bg: #bbcfcc;       /* ash gray background */
       --card: #ffffff;     /* white cards */
-      --muted:#719606;     /* apple green for subtitles */
+      --muted:#719606;     /* green for subtle text */
       --ink: #727071;      /* dim gray for text */
-      --brand: #77a106;    /* avocado green for links */
-      --accent: #77a106;   /* yellow-green for buttons */
+      --brand: #77a106;    /* apple green for links */
+      --accent: #77a106;   /* apple green buttons */
       --chip: #77a106;     /* apple green chips */
       --outline: #bbcfcc;  /* subtle borders */
     }
-
 
     * { box-sizing: border-box }
     html, body {
@@ -32,7 +31,8 @@
 
     a { color: var(--brand); text-decoration: none }
     a:hover { text-decoration: underline }
-    /* HERO (title inside banner) – unchanged except for spacing below */
+
+    /* HERO (title inside banner) */
     .hero{
       background:
         linear-gradient(rgba(114,112,113,0.55), rgba(114,112,113,0.35)),
@@ -74,7 +74,7 @@
       background:#fff;
     }
     
-    /* Name + subtitle centered */
+    /* Name area */
     .title{
       text-align:center;
       max-width: 920px;
@@ -85,7 +85,17 @@
       line-height: 1.2;
       color: var(--ink);
     }
-    .subtitle{ color: var(--chip); margin-top: 9px }
+
+    /* NEW: Research tags (apple green + larger) */
+    .research-tags{
+      color: #77A106;
+      font-size: 1.25rem;
+      font-weight: 700;
+      letter-spacing: .3px;
+      margin: 8px 0 6px;
+      text-align: center;
+      text-wrap: balance;
+    }
     
     /* Links row: symmetric, centered, even spacing */
     .links{
@@ -122,7 +132,14 @@
       letter-spacing:.2px;
       color: var(--brand);
     }
-    
+
+    /* Narrow reading column for readability */
+    .narrow {
+      max-width: 720px;
+      margin: 0 auto;
+      line-height: 1.75;
+    }
+
     /* Buttons */
     .btnrow{ display:flex; flex-wrap:wrap; gap:10px; margin-top:10px }
     .btn{
@@ -142,8 +159,8 @@
       header img{ width: 140px; height: 140px }
       .title h1{ font-size: 1.6rem }
       .links{ grid-auto-columns: minmax(140px, auto) }
+      .research-tags{ font-size: 1.1rem }
     }
-
   </style>
 </head>
 
@@ -157,7 +174,7 @@
     <header>
       <img src="./photo.jpg" alt="Profile photo" />
       <div class="title">
-        <div class="subtitle">
+        <div class="research-tags">
           Drug-Design · Graph-Neural-Networks · Free Energy Calculations · Enhanced Molecular Simulations
         </div>
       </div>
@@ -169,44 +186,41 @@
         <a class="chip" href="https://github.com/chemdesign-accl" target="_blank">GitHub</a>
         <a class="chip" href="https://www.linkedin.com/in/alma-c-castañeda-leautaud-8556021a9" target="_blank">LinkedIn</a>
         <a class="chip" href="./publications.html">📚 Publications</a>
-        <a class="chip" href="./SoP.html"> Statement of Purpose </a>
-
+        <a class="chip" href="./SoP.html">Statement of Purpose</a>
       </nav>
     </header>
 
-    <div class="grid">
+    <div class="narrow">
       <section>
         <h2>About Me</h2>
         <div class="item">
           <p>
-          Hi, welcome to my web-page! I am a <span style="color: var(--ink); font-weight:600;">Ph.D. candidate in Chemistry</span> (Theoretical and Computational Track) at 
-          <span style="color: var(--ink); font-weight:600;">UC San Diego</span>, I currently work at the 
-          <span style="color: var(--ink); font-weight:600;">Amaro Lab</span> specializing in computational approaches for 
-          <span style="color: var(--ink); font-weight:600;">drug discovery</span>. My work is driven by a motivation to design safer and more effective 
-          therapeutics for conditions that historically lack adequate treatments. For instance, during my Master’s research I proposed a derivative of a commercial antipsychotic aimed at reducing the 
-          cardiometabolic side effects often associated with schizophrenia medications.
-          <p>
-          My current research integrates <span style="color: var(--ink); font-weight:600;">Deep Learning (DL)</span> and 
-          <span style="color: var(--ink); font-weight:600;">Molecular Simulations</span> to accelerate antiviral discovery. I develop new 
-          <span style="color: var(--ink); font-weight:600;">graph-based neural networks (GNNs)</span>, specifically 
-          <span style="color: var(--ink); font-weight:600;">message-passing neural networks (MPNNs)</span> for molecular and atom-level predictions, with a focus on identifying and optimizing inhibitors of the 
-          <span style="color: var(--ink); font-weight:600;">SARS-CoV-2 NSP13 helicase</span>. I am also interested in large-scale exploration of 
-          <span style="color: var(--ink); font-weight:600;">chemical space</span>, both to understand its diversity and to adapt DL models for broader predictive power.
+            Hi, welcome to my web-page! I am a <span style="color: var(--ink); font-weight:600;">Ph.D. candidate in Chemistry</span> (Theoretical and Computational Track) at 
+            <span style="color: var(--ink); font-weight:600;">UC San Diego</span>, I currently work at the 
+            <span style="color: var(--ink); font-weight:600;">Amaro Lab</span> specializing in computational approaches for 
+            <span style="color: var(--ink); font-weight:600;">drug discovery</span>. My work is driven by a motivation to design safer and more effective 
+            therapeutics for conditions that historically lack adequate treatments. For instance, during my Master’s research I proposed a derivative of a commercial antipsychotic aimed at reducing the 
+            cardiometabolic side effects often associated with schizophrenia medications.
           </p>
-          
           <p>
-          Beyond machine learning, I apply <span style="color: var(--ink); font-weight:600;">enhanced molecular simulations</span>, including 
-          <span style="color: var(--ink); font-weight:600;">metadynamics</span>, 
-          <span style="color: var(--ink); font-weight:600;">Gaussian-accelerated dynamics</span>, and 
-          <span style="color: var(--ink); font-weight:600;">free-energy calculations</span>, to probe biomolecular mechanisms with high accuracy. My Ph.D. thesis focuses on understanding how the SARS-CoV-2 helicase translocates RNA using nucleoside triphosphates (NTPs), and on developing strategies to inhibit this essential viral process.
+            My current research integrates <span style="color: var(--ink); font-weight:600;">Deep Learning (DL)</span> and 
+            <span style="color: var(--ink); font-weight:600;">Molecular Simulations</span> to accelerate antiviral discovery. I develop new 
+            <span style="color: var(--ink); font-weight:600;">graph-based neural networks (GNNs)</span>, specifically 
+            <span style="color: var(--ink); font-weight:600;">message-passing neural networks (MPNNs)</span> for molecular and atom-level predictions, with a focus on identifying and optimizing inhibitors of the 
+            <span style="color: var(--ink); font-weight:600;">SARS-CoV-2 NSP13 helicase</span>. I am also interested in large-scale exploration of 
+            <span style="color: var(--ink); font-weight:600;">chemical space</span>, both to understand its diversity and to adapt DL models for broader predictive power.
           </p>
-          
           <p>
-          Earlier in my career, I conducted in vitro studies on plant viruses, exploring how icosahedral viruses can be engineered as 
-          <span style="color: var(--ink); font-weight:600;">nanocapsids</span> for targeted 
-          <span style="color: var(--ink); font-weight:600;">drug delivery</span>.
+            Beyond machine learning, I apply <span style="color: var(--ink); font-weight:600;">enhanced molecular simulations</span>, including 
+            <span style="color: var(--ink); font-weight:600;">metadynamics</span>, 
+            <span style="color: var(--ink); font-weight:600;">Gaussian-accelerated dynamics</span>, and 
+            <span style="color: var(--ink); font-weight:600;">free-energy calculations</span>, to probe biomolecular mechanisms with high accuracy. My Ph.D. thesis focuses on understanding how the SARS-CoV-2 helicase translocates RNA using nucleoside triphosphates (NTPs), and on developing strategies to inhibit this essential viral process.
           </p>
-
+          <p>
+            Earlier in my career, I conducted in vitro studies on plant viruses, exploring how icosahedral viruses can be engineered as 
+            <span style="color: var(--ink); font-weight:600;">nanocapsids</span> for targeted 
+            <span style="color: var(--ink); font-weight:600;">drug delivery</span>.
+          </p>
         </div>
       </section>
 
@@ -234,5 +248,3 @@
   </div>
 </body>
 </html>
-
-
