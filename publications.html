@@ -4,40 +4,169 @@
   <meta charset="utf-8" />
   <title>Publications – Alma C. Castañeda-Leautaud</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter&display=swap" rel="stylesheet" />
   <style>
-    body { background: #0b0e14; color: #e6edf3; font-family: 'Inter', sans-serif; padding: 40px; max-width: 760px; margin: auto; }
-    h1 { color: #dbeafe; }
-    .pub { margin: 20px 0; padding: 12px; border: 1px solid #202a3a; border-radius: 12px; background: #121826; }
-    .pub img { width: 160px; float: right; margin-left: 20px; border-radius: 8px; }
-    .pub b { color: #fff; }
-    .pub a { color: #60a5fa; text-decoration: none; }
-    .pub a:hover { text-decoration: underline; }
+    /* === site palette aligned with SoP page === */
+    :root{
+      --bg:#bbcfcc;        /* ash gray */
+      --card:#ffffff;      /* white cards */
+      --ink:#727071;       /* dim gray text */
+      --muted:#77a106;     /* apple green */
+      --brand:#719606;     /* avocado green (links) */
+      --accent:#aee01f;    /* yellow-green CTA */
+      --chip:#77a106;      /* chip background */
+      --outline:#bbcfcc;   /* soft borders */
+    }
+
+    *{box-sizing:border-box}
+    html,body{
+      margin:0; height:100%;
+      background:var(--bg); color:var(--ink);
+      font:18px/1.75 'Inter',sans-serif;
+    }
+
+    a{color:var(--brand); text-decoration:none}
+    a:hover{text-decoration:underline}
+
+    .shell{max-width:1100px; margin:0 auto; padding:20px}
+
+    /* top action chips (match SoP) */
+    .bar{
+      display:flex; gap:10px; flex-wrap:wrap; align-items:center;
+      justify-content:flex-start; margin-bottom:14px;
+    }
+    .chip{
+      display:inline-flex; align-items:center; gap:8px;
+      background:var(--chip); color:#102; border:1px solid var(--outline);
+      padding:8px 12px; border-radius:999px; text-decoration:none;
+    }
+
+    h1{
+      margin:6px 0 18px; font-size:2rem; line-height:1.25; color:var(--brand);
+    }
+    .sub{ color:var(--muted); margin-bottom:16px }
+
+    /* publication list: tidy responsive cards */
+    .list{
+      display:grid; gap:18px;
+    }
+
+    .pub{
+      display:grid; grid-template-columns: 140px 1fr; gap:18px;
+      background:var(--card); border:1px solid var(--outline); border-radius:14px;
+      padding:16px; box-shadow:0 2px 0 rgba(0,0,0,.05);
+    }
+    .thumb{
+      width:100%; aspect-ratio: 4 / 5; /* common TOC aspect */
+      border-radius:10px; overflow:hidden; background:#eee;
+      display:block; object-fit:cover;
+      box-shadow:0 1px 10px rgba(0,0,0,.06);
+    }
+    .meta b{ display:block; font-size:1.05rem; color:#2a2a2a; margin-bottom:4px }
+    .meta i{ color:#5b5b5b }
+    .tags{ margin-top:8px; display:flex; flex-wrap:wrap; gap:8px }
+    .tag{
+      font-size:.85rem; padding:4px 8px; border-radius:999px;
+      border:1px solid var(--outline); background:#f6fbf9; color:#2a3;
+    }
+
+    /* DOI/links row */
+    .links{
+      margin-top:10px; display:flex; gap:12px; flex-wrap:wrap;
+    }
+    .btn{
+      display:inline-flex; align-items:center; gap:8px;
+      background:var(--accent); color:#23310a; border:1px solid #cfe96b;
+      padding:8px 12px; border-radius:10px; text-decoration:none;
+      box-shadow:0 1px 0 rgba(0,0,0,0.06);
+    }
+    .btn:hover{ filter:brightness(.97) }
+
+    /* mobile */
+    @media (max-width: 680px){
+      .pub{ grid-template-columns: 1fr; }
+      .thumb{ aspect-ratio: 16 / 9; }
+    }
   </style>
 </head>
 <body>
-  <h1>Selected Publications</h1>
+  <div class="shell">
 
-  <div class="pub">
-    <img src="./assets/toc1.png" alt="TOC Image 1">
-    <b>Optimal message passing for molecular prediction is simple, attentive, and spatial</b><br/>
-    <i>A.C. Castañeda-Leautaud, R. Amaro</i><br/>
-    <span>Digital Discovery (under review, 2025)</span>
+    <!-- top chips for quick nav -->
+    <div class="bar">
+      <a class="chip" href="./index.html">← Back to Home</a>
+      <a class="chip" href="./SoP.html">Statement of Purpose</a>
+    </div>
+
+    <h1>Selected Publications</h1>
+    <div class="sub">TOC images and links to venues or DOIs</div>
+
+    <div class="list">
+      <!-- PUB 1 -->
+      <article class="pub">
+        <img class="thumb" src="./assets/toc1.png" alt="TOC Image 1" />
+        <div class="meta">
+          <b>Optimal message passing for molecular prediction is simple, attentive, and spatial</b>
+          <i>A.C. Castañeda-Leautaud, R. Amaro</i><br/>
+          <span>Digital Discovery (under review, 2025)</span>
+
+          <div class="tags">
+            <span class="tag">GNNs</span>
+            <span class="tag">MPNNs</span>
+            <span class="tag">Molecular Property Prediction</span>
+          </div>
+
+          <div class="links">
+            <!-- Add links as they become available -->
+            <!-- <a class="btn" href="#" target="_blank">Preprint</a> -->
+            <!-- <a class="btn" href="#" target="_blank">Code</a> -->
+          </div>
+        </div>
+      </article>
+
+      <!-- PUB 2 -->
+      <article class="pub">
+        <img class="thumb" src="./assets/toc2.png" alt="TOC Image 2" />
+        <div class="meta">
+          <b>Discovery of tetrahydroisoquinoline-based SARS-CoV-2 helicase inhibitors</b>
+          <i>A.C. Castañeda-Leautaud <i>et&nbsp;al.</i></i><br/>
+          <span>Journal of Chemical Information and Modeling (under review, 2025)</span>
+
+          <div class="tags">
+            <span class="tag">SARS-CoV-2 NSP13</span>
+            <span class="tag">Virtual Screening</span>
+            <span class="tag">Medicinal Chemistry</span>
+          </div>
+
+          <div class="links">
+            <!-- <a class="btn" href="#" target="_blank">Preprint</a> -->
+          </div>
+        </div>
+      </article>
+
+      <!-- PUB 3 -->
+      <article class="pub">
+        <img class="thumb" src="./assets/toc3.png" alt="TOC Image 3" />
+        <div class="meta">
+          <b>Molecular dynamics and free energy calculations of clozapine…</b>
+          <i>A.C. Castañeda-Leautaud <i>et&nbsp;al.</i></i><br/>
+          <span>Journal of Biomolecular Structure and Dynamics, 41(19), 2022</span>
+
+          <div class="tags">
+            <span class="tag">Molecular Dynamics</span>
+            <span class="tag">Free Energy</span>
+          </div>
+
+          <div class="links">
+            <a class="btn" href="https://doi.org/10.1080/07391102.2022.2148748" target="_blank">DOI</a>
+          </div>
+        </div>
+      </article>
+    </div>
+
+    <p style="margin-top:18px">
+      <a href="./index.html">← Back to main page</a>
+    </p>
   </div>
-
-  <div class="pub">
-    <img src="./assets/toc2.png" alt="TOC Image 2">
-    <b>Discovery of tetrahydroisoquinoline-based SARS-CoV-2 helicase inhibitors</b><br/>
-    <i>A.C. Castañeda-Leautaud <i>et al.</i></i><br/>
-    <span>JCIM (under review, 2025)</span>
-  </div>
-
-  <div class="pub">
-    <img src="./assets/toc3.png" alt="TOC Image 3">
-    <b>Molecular dynamics and free energy calculations of clozapine…</b><br/>
-    <i>A.C. Castañeda-Leautaud <i>et al.</i></i><br/>
-    <a href="https://doi.org/10.1080/07391102.2022.2148748" target="_blank">JBSD 41(19)</a>
-  </div>
-
-  <p><a href="./index.html">← Back to main page</a></p>
 </body>
 </html>
