@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Statement of Purpose – Alma C. Castañeda-Leautaud</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter&display=swap" rel="stylesheet" />
+  <style>
+    /* === reuse your site palette (protein/ash scheme) === */
+    :root{
+      --bg:#bbcfcc;        /* ash gray */
+      --card:#ffffff;      /* white cards */
+      --ink:#727071;       /* dim gray text */
+      --muted:#77a106;     /* apple green */
+      --brand:#719606;     /* avocado green */
+      --accent:#aee01f;    /* yellow-green CTA */
+      --chip:#77a106;      /* chip background */
+      --outline:#bbcfcc;   /* soft borders */
+    }
+
+    *{box-sizing:border-box}
+    html,body{margin:0;height:100%;background:var(--bg);color:var(--ink);font:18px/1.75 'Inter',sans-serif}
+
+    a{color:var(--brand);text-decoration:none}
+    a:hover{text-decoration:underline}
+
+    .shell{max-width:1200px;margin:0 auto;padding:20px}
+    .bar{display:flex;gap:10px;align-items:center;margin-bottom:12px}
+    .chip{
+      display:inline-flex;align-items:center;gap:8px;
+      background:var(--chip);color:#102; border:1px solid var(--outline);
+      padding:8px 12px;border-radius:999px;text-decoration:none;
+    }
+
+    /* === split layout === */
+    .sop{
+      display:grid;grid-template-columns: minmax(280px, 42%) 1fr; gap:24px;
+    }
+    /* left: image column with sticky hero */
+    .art{
+      position:sticky; top:20px; height:calc(100vh - 40px);
+      border-radius:18px; overflow:hidden; border:1px solid var(--outline);
+      box-shadow:0 8px 24px rgba(0,0,0,.12);
+      background:
+        linear-gradient(180deg, rgba(114,112,113,.25), rgba(114,112,113,.05)),
+        url('./background.jpg') center center / cover no-repeat;
+      display:flex; align-items:flex-end; justify-content:flex-start;
+    }
+    .art .caption{
+      width:100%; backdrop-filter: blur(6px);
+      background: rgba(187,207,204,.55);
+      color:#1a1a1a; padding:14px 16px; font-size:.95rem;
+    }
+
+    /* right: SOP content */
+    .paper{
+      background:var(--card); border:1px solid var(--outline); border-radius:18px;
+      padding:28px 26px; box-shadow:0 2px 0 rgba(0,0,0,.05);
+    }
+    .paper h1{margin:0 0 8px; font-size:1.9rem; line-height:1.25; color:var(--brand)}
+    .paper .sub{color:var(--muted); margin-bottom:20px}
+    .paper p{margin:0 0 14px}
+    .paper .cta{margin-top:18px; display:flex; gap:10px; flex-wrap:wrap}
+    .btn{
+      display:inline-flex; align-items:center; gap:8px;
+      background:var(--accent); color:#23310a; border:1px solid #cfe96b;
+      padding:10px 14px; border-radius:10px; text-decoration:none;
+    }
+    .btn:hover{filter:brightness(.97)}
+
+    @media (max-width: 900px){
+      .sop{grid-template-columns:1fr; gap:16px}
+      .art{position:relative; top:0; height:220px}
+    }
+  </style>
+</head>
+<body>
+  <div class="shell">
+    <!-- top nav chips -->
+    <div class="bar">
+      <a class="chip" href="./index.html">← Back to Home</a>
+      <a class="chip" href="./publications.html">📚 Publications</a>
+    </div>
+
+    <div class="sop">
+      <!-- LEFT: sticky image used differently from your home hero -->
+      <aside class="art" aria-label="Protein visualization">
+        <div class="caption">
+          Protein-inspired research motif — image reused as an immersive, sticky side panel.
+        </div>
+      </aside>
+
+      <!-- RIGHT: your statement -->
+      <main class="paper">
+        <h1>Statement of Purpose</h1>
+        <div class="sub">Motivation & research vision</div>
+
+        <!-- ↓ Replace the text below with your SoP content -->
+        <p>
+          My goal is to accelerate antiviral discovery by combining interpretable graph neural
+          networks with physics-based simulation. I focus on models that capture molecular
+          geometry, uncertainty, and structure–property relationships, and on GPU-first
+          workflows that scale to ultra-large chemical spaces.
+        </p>
+        <p>
+          In the Amaro Lab, I develop GNN architectures and data pipelines for virtual
+          screening, integrate enhanced sampling and free-energy methods, and collaborate
+          closely with experimental teams. I am especially motivated by problems where
+          model explanations guide synthesis decisions and mechanistic hypotheses.
+        </p>
+        <p>
+          My long-term aim is to build robust, open pipelines that turn sequence and structure
+          data into actionable compounds—bridging ML, molecular simulation, and wet-lab testing.
+        </p>
+
+        <div class="cta">
+          <a class="btn" href="./Alma_CV.pdf" target="_blank">Open CV</a>
+          <a class="btn" href="mailto:acastanedaleautaud@ucsd.edu">Contact</a>
+        </div>
+      </main>
+    </div>
+  </div>
+</body>
+</html>
