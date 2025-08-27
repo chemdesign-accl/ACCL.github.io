@@ -50,33 +50,41 @@
       margin:0; text-shadow:0 2px 10px rgba(0,0,0,.65);
     }
 
-    /* Row container for photo + tags (sits on the seam) */
+    /* Row container for photo + tags */
     .header-row {
-      display: flex; align-items: center; justify-content: center;
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;   /* photo flush left */
       gap: 24px;
-      position: absolute; bottom: -70px; left: 50%;
+      position: absolute;
+      bottom: -40px;   /* LIFTED UP from -70px */
+      left: 50%;
       transform: translateX(-50%);
-      padding: 0 16px; /* guard against edge on very small screens */
+      width: 100%;     /* let the row stretch across */
+      padding: 0 16px;
     }
-
-    /* Avatar */
+    
+    /* Avatar (smaller tweak if needed) */
     .header-row img {
-      width: 220px; height: 220px; border-radius: 50%;
-      object-fit: cover; border: 3px solid #fff;
+      width: 220px;
+      height: 220px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 3px solid #fff;
       box-shadow: 0 8px 22px rgba(0,0,0,.25);
-      background:#fff; z-index: 2;
+      background:#fff;
     }
-
-    /* Research tags */
+    
+    /* Research tags now sit next to photo */
     .research-tags {
-      color: #77a106;      
-      font-size: 1.25rem;
+      color: #77a106;
+      font-size: 1.3rem;
       font-weight: 700;
       letter-spacing: .3px;
-      margin-down: 40px;   
-      white-space: nowrap;
+      margin-top: 0;      /* no extra pushing down */
+      text-align: left;
     }
-    .research-left, .research-right { flex: 1; text-align: center; }
+
 
     /* Links row: centered, even spacing */
     .links-wrap { margin-top: 14px; }
@@ -125,22 +133,20 @@
 </head>
 
 <body>
+  <!-- HERO -->
   <div class="hero">
     <h1>Alma C. Castañeda-Leautaud</h1>
-
-    <!-- photo + tags on the seam -->
+  
+    <!-- photo + tags -->
     <div class="header-row">
-      <div class="research-tags research-left">
-        Drug-Design · Graph-Neural-Networks
-      </div>
-
       <img src="./photo.jpg" alt="Profile photo" />
-
-      <div class="research-tags research-right">
-        Free Energy Calculations · Enhanced Molecular Simulations
+  
+      <div class="research-tags">
+        Drug-Design · Graph-Neural-Networks · Free Energy Calculations · Enhanced Molecular Simulations
       </div>
     </div>
   </div>
+
 
   <!-- nav chips below the seam -->
   <div class="links-wrap">
