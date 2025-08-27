@@ -83,31 +83,36 @@
 
 
     /* Row container for photo + tags */
-    .header-row{
+    .header-row {
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;   /* photo flush left */
+      gap: 24px;
       position: absolute;
-      bottom: -60px;               /* seam overlap */
+      bottom: -40px;   /* seam overlap */
       left: 50%;
       transform: translateX(-50%);
-      width: min(1100px, 92vw);    /* keep nicely centered */
-      display: grid;
-      grid-template-columns: var(--avatar) 1fr;
-      align-items: end;
-      column-gap: 28px;
+      width: 100%;     /* let the row stretch across */
       padding: 0 16px;
-      z-index: 3;
     }
     
-    /* Avatar: no absolute positioning */
-    .header-row img{
+    /* Avatar: absolute positioned */
+    .header-row img {
+      position: absolute;
+      left: 10%;
+      transform: translateX(-50%);
+      bottom: calc(var(--avatar) * -0.5);   /* sits between hero & green row */
       width: var(--avatar);
       height: var(--avatar);
       border-radius: 50%;
       object-fit: cover;
-      object-position: 75% 5%;     /* your current framing */
+      object-position: 75% 5%;     /* your framing */
       border: 4px solid #fff;
       box-shadow: 0 8px 22px rgba(0,0,0,.25);
-      background:#fff;
+      background: #fff;
+      z-index: 3;
     }
+
 
     
     /* Push the tags to the RIGHT so they don't overlap the photo */
