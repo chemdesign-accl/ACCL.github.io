@@ -13,7 +13,7 @@
 
       /* Thumb sizing (adjust here if you want bigger/smaller images) */
       --thumbW: 340px;          /* column width for the image */
-      --thumbRatio: 15 / 10;      /* 16/9 = flatter, 4/3 = a bit taller */
+      --thumbRatio: 2 ;      /* 16/9 = flatter, 4/3 = a bit taller */
     }
 
     *{box-sizing:border-box}
@@ -47,7 +47,7 @@
     .pub{
       display:grid;
       grid-template-columns: var(--thumbW) 1fr;  /* fixed thumb column + flexible text */
-      gap:3px;
+      gap:25px;
       background:var(--card);
       border:1px solid var(--outline);
       border-radius:14px;
