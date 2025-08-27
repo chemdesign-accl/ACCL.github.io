@@ -96,7 +96,6 @@
       padding: 0 16px;
     }
     
-    /* Avatar: absolute positioned */
     .header-row img {
       position: absolute;
       left: 10%;
@@ -112,10 +111,7 @@
       background: #fff;
       z-index: 3;
     }
-
-
     
-    /* Push the tags to the RIGHT so they don't overlap the photo */
     .research-tags{
       color:#ffffff;
       font-size:1.3rem;
@@ -126,18 +122,18 @@
       margin-top: 5;
     }
     .news-scroll {
-      max-height: 250px;     /* adjust to how tall you want the box */
-      overflow-y: auto;      /* adds vertical scrollbar when needed */
-      padding-right: 8px;    /* space so scrollbar doesn’t overlap text */
+      max-height: 250px;     
+      overflow-y: auto;    
+      padding-right: 8px;   
     }
     
     /* Links row: centered, even spacing */
     .links-wrap{
-      margin-top: -50px;    
+      margin-top: -48px;    
       margin-bottom: 32px;  
       position: relative;
       z-index: 3;           
-      padding-left: calc(var(--avatar) + 30px);  /* offset = photo + buffer */
+      padding-left: calc(var(--avatar) + 10px); 
     } 
     .links{
       display:grid; grid-auto-flow: column;
