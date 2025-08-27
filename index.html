@@ -63,13 +63,13 @@
       width: 100%;     /* let the row stretch across */
       padding: 0 16px;
     }
-    
-    .header-row img {
-      position: absolute;     /* take it out of the flex row flow */
-      left: 10%;              /* center horizontally */
+    /* Keep the avatar where you have it */
+    .header-row img{
+      position: absolute;
+      left: 10%;
       transform: translateX(-50%);
-      bottom: -110px;         /* push it down so it's between hero and green block */
-      width: 240px;           /* bigger photo */
+      bottom: -110px;
+      width: 240px;
       height: 240px;
       border-radius: 50%;
       object-fit: cover;
@@ -78,21 +78,21 @@
       background:#fff;
       z-index: 3;
     }
-
     
-    /* Research tags now sit next to photo */
-    .research-tags {
-      color: #77a106;
-      font-size: 1.3rem;
-      font-weight: 700;
-      letter-spacing: .3px;
-      margin-top: 0;      /* no extra pushing down */
-      text-align: right;
+    /* Push the tags to the RIGHT so they don't overlap the photo */
+    .research-tags{
+      color:#77a106;
+      font-size:1.3rem;
+      font-weight:700;
+      letter-spacing:.3px;
+      text-align:left;
+      /* avatar diameter (240) + some gutter -> adjust if you resize avatar */
+      padding-left: 320px;          /* <<--- moves tags right of the photo */
+      margin-top: 0;
     }
-
-
+    
     /* Links row: centered, even spacing */
-    .links-wrap { margin-top: -40px; }
+    .links-wrap { margin-top: -64px; }
     .links{
       display:grid; grid-auto-flow: column;
       grid-auto-columns: minmax(160px, auto);
@@ -130,9 +130,9 @@
       .hero{ height: 260px; margin-bottom: 120px }
       .header-row{ bottom: -60px; gap: 12px }
       .header-row img{ width:120px; height:120px }
-      .research-tags{ font-size: 1.05rem; white-space: normal }
+      .research-tags{ padding-left: 0; font-size:1.05rem; }
       .research-left, .research-right{ flex: 1; }
-      .links{ grid-auto-columns: minmax(140px, auto) }
+      .links-wrap{ margin-top: -40px; }  /* a bit less negative on small screens */
     }
   </style>
 </head>
@@ -201,9 +201,23 @@
     <section>
       <h2>News</h2>
       <ul class="tight">
-        <li>📢 [Aug 2025] Speaker at ACS Spring Meeting (San Diego)</li>
-        <li>🧠 [Jul 2025] Preprint on interpretable GNNs submitted to Digital Discovery</li>
-        <li>💊 [Jun 2025] Experimental validation of MWAC-3429 shows sub-µM potency</li>
+        <li>[Aug 2025] Thrilled to announce we submitted our potent helicase inhibitors (EC50 > 1 µM) to JCIM — an exciting step forward for our work!</li>
+        <li>[May 2025] What a whirlwind month. I had the honor of presenting at the 2025 DDC Symposium at UC Riverside. Energized by the discussions and feedback!</li>
+        <li>[May 2025] Excited to share that our preprint on interpretable GNNs has been submitted to <i>Digital Discovery</i> (RSC). A milestone in blending ML with drug discovery.</li>
+        <li>[May 2025] I officially passed my PhD candidacy exam!! 🎉 Feeling grateful for all the support along the way.</li>
+        <li>[Mar 2025] Presented a poster on our GNN advances at the ACS Spring Meeting (San Diego). Incredible to connect with so many brilliant minds in person!</li>
+        <li>[Feb 2025] Submitted a grant proposal to push forward our helicase inhibitor program. Fingers crossed ✨</li>
+        <li>[Jan 2025] Overjoyed that experimental validation confirmed AviDD’s SARS-CoV-2 helicase hit has nanomolar potency (EC50 280 nM)!! 🚀</li>
+        <li>[Nov 2024] Another big validation milestone: AviDD’s helicase hit shows strong potency (EC50 > 500 nM). Momentum is building!</li>
+        <li>[May 2024] Exciting lab results: AviDD’s helicase hit demonstrates micromolar potency (EC50 ~ µM). Each step gets us closer!</li>
+        <li>[Jan 2024] Experimental validation shows EC50 < 10 µM for one of our hits. Steadily climbing towards potent inhibitors!</li>
+        <li>[Nov 2023] Early validation results reveal EC50 < 25 µM — a promising foundation to refine further. Optimistic for what’s ahead.</li>
+        <li>[May 2023] Overjoyed to officially join the <b>Amaro Lab</b>! Looking forward to amazing collaborations and discoveries. 💡</li>
+        <li>[Mar 2023] Wrapped up Statistical Mechanics and finished TA’ing Thermodynamics. Ready for a well-earned holiday break! ☀️</li>
+        <li>[Sep 2022] Super excited to have started my PhD in Chemistry at UCSD — Go Tritons!! 🐬</li>
+        <li>[Aug 2022] My first-ever publication has been accepted to <i>Journal of Biomolecular Structure & Dynamics</i> — such a proud moment!</li>
+        <li>[Jul 2022] Closing a wonderful chapter at Biotix. Forever grateful to the Quality team — I already miss you! 💙</li>
+        <li>[Jul 2021] Honored and humbled to be awarded the Fulbright-García Robles Scholarship for STEM studies in the US!! 🌎✨</li>
       </ul>
     </section>
 
