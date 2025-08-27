@@ -6,103 +6,90 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <link href="https://fonts.googleapis.com/css2?family=Inter&display=swap" rel="stylesheet" />
   <style>
-    /* === site palette aligned with SoP page === */
     :root{
-      --bg:#bbcfcc;        /* ash gray */
-      --card:#ffffff;      /* white cards */
-      --ink:#727071;       /* dim gray text */
-      --muted:#77a106;     /* apple green */
-      --brand:#719606;     /* avocado green (links) */
-      --accent:#aee01f;    /* yellow-green CTA */
-      --chip:#77a106;      /* chip background */
-      --outline:#bbcfcc;   /* soft borders */
+      --bg:#bbcfcc; --card:#ffffff; --ink:#727071;
+      --muted:#77a106; --brand:#719606; --accent:#aee01f;
+      --chip:#77a106; --outline:#bbcfcc;
     }
 
     *{box-sizing:border-box}
-    html,body{
-      margin:0; height:100%;
-      background:var(--bg); color:var(--ink);
-      font:18px/1.75 'Inter',sans-serif;
+    html,body{margin:0;height:100%;background:var(--bg);color:var(--ink);font:18px/1.75 'Inter',sans-serif}
+    a{color:var(--brand);text-decoration:none} a:hover{text-decoration:underline}
+
+    /* A4-friendly width */
+    .shell{max-width:8.3in;margin:0 auto;padding:20px}
+
+    .bar{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin-bottom:14px}
+    .chip{display:inline-flex;align-items:center;gap:8px;background:var(--chip);color:#102;border:1px solid var(--outline);padding:8px 12px;border-radius:999px;text-decoration:none}
+
+    h1{margin:6px 0 8px;font-size:2rem;line-height:1.25;color:var(--brand)}
+    .sub{color:var(--muted);margin-bottom:12px}
+
+    /* Keyword filter row */
+    .filters{display:flex;flex-wrap:wrap;gap:8px;margin:8px 0 18px}
+    .filter{
+      font:14px/1 'Inter',sans-serif; padding:8px 12px; border-radius:999px;
+      border:1px solid var(--outline); background:#f6fbf9; color:#2a3; cursor:pointer;
     }
+    .filter.active{background:var(--accent);color:#23310a;border-color:#cfe96b}
+    .filter[data-tag="all"]{background:#fff}
 
-    a{color:var(--brand); text-decoration:none}
-    a:hover{text-decoration:underline}
-
-    .shell{max-width:1100px; margin:0 auto; padding:20px}
-
-    /* top action chips (match SoP) */
-    .bar{
-      display:flex; gap:10px; flex-wrap:wrap; align-items:center;
-      justify-content:flex-start; margin-bottom:14px;
-    }
-    .chip{
-      display:inline-flex; align-items:center; gap:8px;
-      background:var(--chip); color:#102; border:1px solid var(--outline);
-      padding:8px 12px; border-radius:999px; text-decoration:none;
-    }
-
-    h1{
-      margin:6px 0 18px; font-size:2rem; line-height:1.25; color:var(--brand);
-    }
-    .sub{ color:var(--muted); margin-bottom:16px }
-
-    /* publication list: tidy responsive cards */
-    .list{
-      display:grid; gap:18px;
-    }
-
+    /* Publication cards */
+    .list{display:grid;gap:18px}
     .pub{
-      display:grid; grid-template-columns: 140px 1fr; gap:18px;
+      display:grid; grid-template-columns: 160px 1fr; gap:18px;
       background:var(--card); border:1px solid var(--outline); border-radius:14px;
       padding:16px; box-shadow:0 2px 0 rgba(0,0,0,.05);
     }
     .thumb{
-      width:100%; aspect-ratio: 4 / 5; /* common TOC aspect */
-      border-radius:10px; overflow:hidden; background:#eee;
-      display:block; object-fit:cover;
-      box-shadow:0 1px 10px rgba(0,0,0,.06);
+      width:100%; height:auto; border-radius:10px; display:block;
+      object-fit:cover; box-shadow:0 1px 10px rgba(0,0,0,.06);
     }
-    .meta b{ display:block; font-size:1.05rem; color:#2a2a2a; margin-bottom:4px }
-    .meta i{ color:#5b5b5b }
-    .tags{ margin-top:8px; display:flex; flex-wrap:wrap; gap:8px }
-    .tag{
-      font-size:.85rem; padding:4px 8px; border-radius:999px;
-      border:1px solid var(--outline); background:#f6fbf9; color:#2a3;
-    }
+    .meta b{display:block;font-size:1.05rem;color:#2a2a2a;margin-bottom:4px}
+    .meta i{color:#5b5b5b}
 
-    /* DOI/links row */
-    .links{
-      margin-top:10px; display:flex; gap:12px; flex-wrap:wrap;
-    }
-    .btn{
-      display:inline-flex; align-items:center; gap:8px;
-      background:var(--accent); color:#23310a; border:1px solid #cfe96b;
-      padding:8px 12px; border-radius:10px; text-decoration:none;
-      box-shadow:0 1px 0 rgba(0,0,0,0.06);
-    }
-    .btn:hover{ filter:brightness(.97) }
+    .tags{margin-top:8px;display:flex;flex-wrap:wrap;gap:8px}
+    .tag{font-size:.85rem;padding:4px 8px;border-radius:999px;border:1px solid var(--outline);background:#f6fbf9;color:#2a3}
 
-    /* mobile */
-    @media (max-width: 680px){
-      .pub{ grid-template-columns: 1fr; }
-      .thumb{ aspect-ratio: 16 / 9; }
+    .links{margin-top:10px;display:flex;gap:12px;flex-wrap:wrap}
+    .btn{display:inline-flex;align-items:center;gap:8px;background:var(--accent);color:#23310a;border:1px solid #cfe96b;padding:8px 12px;border-radius:10px;text-decoration:none;box-shadow:0 1px 0 rgba(0,0,0,.06)}
+    .btn:hover{filter:brightness(.97)}
+
+    @media (max-width: 700px){
+      .pub{grid-template-columns:1fr}
     }
   </style>
 </head>
 <body>
   <div class="shell">
-
-    <!-- top chips for quick nav -->
+    <!-- top chips -->
     <div class="bar">
       <a class="chip" href="./index.html">← Back to Home</a>
       <a class="chip" href="./SoP.html">Statement of Purpose</a>
     </div>
 
     <h1>Selected Publications</h1>
-    <div class="list">
+    <div class="sub">Click a keyword to filter.</div>
+
+    <!-- Keyword filter bar -->
+    <div class="filters" id="filters">
+      <button class="filter active" data-tag="all">All</button>
+      <button class="filter" data-tag="GNNs">GNNs</button>
+      <button class="filter" data-tag="MPNNs">MPNNs</button>
+      <button class="filter" data-tag="Molecular Property Prediction">Molecular Property Prediction</button>
+      <button class="filter" data-tag="Clustering and Data Visualization">Clustering</button>
+      <button class="filter" data-tag="SARS-CoV-2 NSP13">SARS-CoV-2 NSP13</button>
+      <button class="filter" data-tag="Virtual Screening">Virtual Screening</button>
+      <button class="filter" data-tag="Medicinal Chemistry">Medicinal Chemistry</button>
+      <button class="filter" data-tag="Deep-Learning">Deep-Learning</button>
+      <button class="filter" data-tag="Molecular Dynamics">Molecular Dynamics</button>
+      <button class="filter" data-tag="Free Energy Calculation">Free Energy Calculation</button>
+    </div>
+
+    <div class="list" id="publist">
       <!-- PUB 1 -->
-      <article class="pub">
-        <img class="thumb" src="./assets/TOC-GNN.tiff" alt="TOC Image 1" />
+      <article class="pub" data-tags="GNNs,MPNNs,Molecular Property Prediction,Clustering and Data Visualization">
+        <img class="thumb" src="./assets/TOC-GNN.png" alt="TOC Image 1" />
         <div class="meta">
           <b>Optimal message passing for molecular prediction is simple, attentive, and spatial</b>
           <i>A.C. Castañeda-Leautaud, R. Amaro</i><br/>
@@ -112,21 +99,14 @@
             <span class="tag">GNNs</span>
             <span class="tag">MPNNs</span>
             <span class="tag">Molecular Property Prediction</span>
-            <span class="tag">Clustering and Data Visualization</span>
-
-          </div>
-
-          <div class="links">
-            <!-- Add links as they become available -->
-            <!-- <a class="btn" href="#" target="_blank">Preprint</a> -->
-            <!-- <a class="btn" href="#" target="_blank">Code</a> -->
+            <span class="tag">Clustering</span>
           </div>
         </div>
       </article>
 
       <!-- PUB 2 -->
-      <article class="pub">
-        <img class="thumb" src="./assets/TOC_3429.tiff" alt="TOC Image 2" />
+      <article class="pub" data-tags="SARS-CoV-2 NSP13,Virtual Screening,Medicinal Chemistry,Deep-Learning">
+        <img class="thumb" src="./assets/TOC_3429.png" alt="TOC Image 2" />
         <div class="meta">
           <b>Discovery of tetrahydroisoquinoline-based SARS-CoV-2 helicase inhibitors</b>
           <i>A.C. Castañeda-Leautaud <i>et&nbsp;al.</i></i><br/>
@@ -137,17 +117,12 @@
             <span class="tag">Virtual Screening</span>
             <span class="tag">Medicinal Chemistry</span>
             <span class="tag">Deep-Learning</span>
-
-          </div>
-
-          <div class="links">
-            <!-- <a class="btn" href="#" target="_blank">Preprint</a> -->
           </div>
         </div>
       </article>
 
       <!-- PUB 3 -->
-      <article class="pub">
+      <article class="pub" data-tags="Molecular Dynamics,Medicinal Chemistry,Free Energy Calculation">
         <img class="thumb" src="./assets/TOC_clozapine.jpg" alt="TOC Image 3" />
         <div class="meta">
           <b>Molecular dynamics and free energy calculations of clozapine…</b>
@@ -157,8 +132,7 @@
           <div class="tags">
             <span class="tag">Molecular Dynamics</span>
             <span class="tag">Medicinal Chemistry</span>
-            <span class="tag">Implicitt Solvent Free Energy Calculation</span>
-            <span class="tag">Free Energy Perturbation</span>
+            <span class="tag">Free Energy Calculation</span>
           </div>
 
           <div class="links">
@@ -168,9 +142,25 @@
       </article>
     </div>
 
-    <p style="margin-top:18px">
-      <a href="./index.html">← Back to main page</a>
-    </p>
+    <p style="margin-top:18px"><a href="./index.html">← Back to main page</a></p>
   </div>
+
+  <!-- tiny filter script -->
+  <script>
+    const filters = document.getElementById('filters');
+    const items = [...document.querySelectorAll('.pub')];
+    filters.addEventListener('click', (e) => {
+      const btn = e.target.closest('.filter');
+      if(!btn) return;
+      // set active
+      filters.querySelectorAll('.filter').forEach(b=>b.classList.remove('active'));
+      btn.classList.add('active');
+      const tag = btn.dataset.tag;
+      items.forEach(card => {
+        const has = (card.dataset.tags || '').toLowerCase().includes((tag||'').toLowerCase());
+        card.style.display = (tag === 'all' || has) ? '' : 'none';
+      });
+    });
+  </script>
 </body>
 </html>
