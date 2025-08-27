@@ -47,7 +47,7 @@
     .pub{
       display:grid;
       grid-template-columns: var(--thumbW) 1fr;  /* fixed thumb column + flexible text */
-      gap:18px;
+      gap:25px;
       background:var(--card);
       border:1px solid var(--outline);
       border-radius:14px;
@@ -65,7 +65,10 @@
       border-radius:12px;
       box-shadow:0 1px 10px rgba(0,0,0,.06);
     }
-
+   /* Meta text */
+    .meta {
+      padding-left: 4px;   /* tiny nudge so text doesn't touch the image */
+    }
     .meta b{display:block;font-size:1.05rem;color:#2a2a2a;margin-bottom:4px}
     .meta i{color:#5b5b5b}
 
