@@ -10,14 +10,18 @@
       --bg:#bbcfcc; --card:#ffffff; --ink:#727071;
       --muted:#77a106; --brand:#719606; --accent:#aee01f;
       --chip:#77a106; --outline:#bbcfcc;
+
+      /* Thumb sizing (adjust here if you want bigger/smaller images) */
+      --thumbW: 160px;
+      --thumbH: 120px;
     }
 
     *{box-sizing:border-box}
     html,body{margin:0;height:100%;background:var(--bg);color:var(--ink);font:18px/1.75 'Inter',sans-serif}
     a{color:var(--brand);text-decoration:none} a:hover{text-decoration:underline}
 
-    /* A4-friendly width */
-    .shell{max-width:8.3cm;margin:0 auto;padding:20px}
+    /* A4-friendly width (8.3 inches) */
+    .shell{max-width:8.3in;margin:0 auto;padding:20px}
 
     .bar{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin-bottom:14px}
     .chip{display:inline-flex;align-items:center;gap:8px;background:var(--chip);color:#102;border:1px solid var(--outline);padding:8px 12px;border-radius:999px;text-decoration:none}
@@ -38,20 +42,25 @@
     .list{display:grid;gap:18px}
     .pub{
       display:grid;
-      grid-template-columns: 180px 1fr;   
+      grid-template-columns: var(--thumbW) 1fr;  /* fixed thumb column + flexible text */
       gap:18px;
       background:var(--card);
       border:1px solid var(--outline);
       border-radius:14px;
       padding:16px;
       box-shadow:0 2px 0 rgba(0,0,0,.05);
-      align-items: start;             
+      align-items:start;
     }
-    }
+
     .thumb{
-      width:100%; max-width: 140px; height:auto; border-radius:10px; display:block;
-      object-fit:cover; box-shadow:0 1px 10px rgba(0,0,0,.06);
+      width:100%;
+      height:var(--thumbH);   /* uniform height for all thumbs */
+      object-fit:cover;       /* fill the box nicely, cropping if needed */
+      display:block;
+      border-radius:10px;
+      box-shadow:0 1px 10px rgba(0,0,0,.06);
     }
+
     .meta b{display:block;font-size:1.05rem;color:#2a2a2a;margin-bottom:4px}
     .meta i{color:#5b5b5b}
 
@@ -62,113 +71,10 @@
     .btn{display:inline-flex;align-items:center;gap:8px;background:var(--accent);color:#23310a;border:1px solid #cfe96b;padding:8px 12px;border-radius:10px;text-decoration:none;box-shadow:0 1px 0 rgba(0,0,0,.06)}
     .btn:hover{filter:brightness(.97)}
 
+    /* Mobile */
     @media (max-width: 700px){
-      .pub{ grid-template-columns: 1fr; align-items: initial; }
-      .thumb{ height:auto; aspect-ratio: 16 / 9; }
-    }
-  </style>
-</head>
-<body>
-  <div class="shell">
-    <!-- top chips -->
-    <div class="bar">
-      <a class="chip" href="./index.html">← Back to Home</a>
-      <a class="chip" href="./SoP.html">Statement of Purpose</a>
-    </div>
-
-    <h1>Selected Publications</h1>
-    <div class="sub">Click a keyword to filter.</div>
-
-    <!-- Keyword filter bar -->
-    <div class="filters" id="filters">
-      <button class="filter active" data-tag="all">All</button>
-      <button class="filter" data-tag="GNNs">GNNs</button>
-      <button class="filter" data-tag="MPNNs">MPNNs</button>
-      <button class="filter" data-tag="Molecular Property Prediction">Molecular Property Prediction</button>
-      <button class="filter" data-tag="Clustering and Data Visualization">Clustering</button>
-      <button class="filter" data-tag="SARS-CoV-2 NSP13">SARS-CoV-2 NSP13</button>
-      <button class="filter" data-tag="Virtual Screening">Virtual Screening</button>
-      <button class="filter" data-tag="Medicinal Chemistry">Medicinal Chemistry</button>
-      <button class="filter" data-tag="Deep-Learning">Deep-Learning</button>
-      <button class="filter" data-tag="Molecular Dynamics">Molecular Dynamics</button>
-      <button class="filter" data-tag="Free Energy Calculation">Free Energy Calculation</button>
-    </div>
-
-    <div class="list" id="publist">
-      <!-- PUB 1 -->
-      <article class="pub" data-tags="GNNs,MPNNs,Molecular Property Prediction,Clustering and Data Visualization">
-        <img class="thumb" src="./assets/TOC-GNN.png" alt="TOC Image 1" />
-        <div class="meta">
-          <b>Optimal message passing for molecular prediction is simple, attentive, and spatial</b>
-          <i>A.C. Castañeda-Leautaud, R. Amaro</i><br/>
-          <span>Digital Discovery (under review, 2025)</span>
-
-          <div class="tags">
-            <span class="tag">GNNs</span>
-            <span class="tag">MPNNs</span>
-            <span class="tag">Molecular Property Prediction</span>
-            <span class="tag">Clustering</span>
-          </div>
-        </div>
-      </article>
-
-      <!-- PUB 2 -->
-      <article class="pub" data-tags="SARS-CoV-2 NSP13,Virtual Screening,Medicinal Chemistry,Deep-Learning">
-        <img class="thumb" src="./assets/TOC_3429.png" alt="TOC Image 2" />
-        <div class="meta">
-          <b>Discovery of tetrahydroisoquinoline-based SARS-CoV-2 helicase inhibitors</b>
-          <i>A.C. Castañeda-Leautaud <i>et&nbsp;al.</i></i><br/>
-          <span>Journal of Chemical Information and Modeling (under review, 2025)</span>
-
-          <div class="tags">
-            <span class="tag">SARS-CoV-2 NSP13</span>
-            <span class="tag">Virtual Screening</span>
-            <span class="tag">Medicinal Chemistry</span>
-            <span class="tag">Deep-Learning</span>
-          </div>
-        </div>
-      </article>
-
-      <!-- PUB 3 -->
-      <article class="pub" data-tags="Molecular Dynamics,Medicinal Chemistry,Free Energy Calculation">
-        <img class="thumb" src="./assets/TOC_clozapine.jpg" alt="TOC Image 3" />
-        <div class="meta">
-          <b>Molecular dynamics and free energy calculations of clozapine…</b>
-          <i>A.C. Castañeda-Leautaud <i>et&nbsp;al.</i></i><br/>
-          <span>Journal of Biomolecular Structure and Dynamics, 41(19), 2022</span>
-
-          <div class="tags">
-            <span class="tag">Molecular Dynamics</span>
-            <span class="tag">Medicinal Chemistry</span>
-            <span class="tag">Free Energy Calculation</span>
-          </div>
-
-          <div class="links">
-            <a class="btn" href="https://doi.org/10.1080/07391102.2022.2148748" target="_blank">DOI</a>
-          </div>
-        </div>
-      </article>
-    </div>
-
-    <p style="margin-top:18px"><a href="./index.html">← Back to main page</a></p>
-  </div>
-
-  <!-- tiny filter script -->
-  <script>
-    const filters = document.getElementById('filters');
-    const items = [...document.querySelectorAll('.pub')];
-    filters.addEventListener('click', (e) => {
-      const btn = e.target.closest('.filter');
-      if(!btn) return;
-      // set active
-      filters.querySelectorAll('.filter').forEach(b=>b.classList.remove('active'));
-      btn.classList.add('active');
-      const tag = btn.dataset.tag;
-      items.forEach(card => {
-        const has = (card.dataset.tags || '').toLowerCase().includes((tag||'').toLowerCase());
-        card.style.display = (tag === 'all' || has) ? '' : 'none';
-      });
-    });
-  </script>
-</body>
-</html>
+      .pub{ grid-template-columns: 1fr; }
+      .thumb{
+        width:100%;
+        height:auto;            /* let it grow naturally on mobile */
+        aspect
