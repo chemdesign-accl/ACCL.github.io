@@ -18,6 +18,8 @@
       --accent: #77a106;   /* apple green buttons */
       --chip: #77a106;     /* apple green chips */
       --outline: #bbcfcc;  /* subtle borders */
+      --avatar: 260px;   /* control avatar size from one place */
+
     }
 
     * { box-sizing: border-box }
@@ -67,10 +69,11 @@
       position: absolute;
       left: 10%;
       transform: translateX(-50%);
-      bottom: -120px;
-      width: 260px;
-      height: 260px;
+      bottom: calc(var(--avatar) * -0.45);     /* sits between hero & green row */
+      width: var(--avatar);
+      height: var(--avatar);
       border-radius: 50%;
+      object-position: 40% 30%;
       object-fit: cover;
       border: 4px solid #fff;
       box-shadow: 0 8px 22px rgba(0,0,0,.25);
@@ -85,13 +88,16 @@
       font-weight:700;
       letter-spacing:.3px;
       text-align:left;
-      /* avatar diameter (240) + some gutter -> adjust if you resize avatar */
-      padding-left: 320px;          /* <<--- moves tags right of the photo */
+      padding-left: calc(var(--avatar) + 60px); /* avatar + gutter */
       margin-top: 0;
     }
     
     /* Links row: centered, even spacing */
-    .links-wrap { margin-down: -64px; }
+    .links-wrap{
+      margin-top: -68px;   /* adjust between -56 and -84 to taste */
+      position: relative;
+      z-index: 2;          /* keep above the white card shadow */
+    } 
     .links{
       display:grid; grid-auto-flow: column;
       grid-auto-columns: minmax(160px, auto);
@@ -112,7 +118,8 @@
     section h2{ margin:0 0 12px; font-size:1.25rem; letter-spacing:.2px; color:var(--brand) }
 
     /* Narrow reading column for readability (you can widen here) */
-    .narrow { max-width: 860px; margin: 0 auto; line-height: 1.75; }
+    .narrow > section:first-of-type{
+    margin-top: 14px; max-width: 860px; margin: 0 auto; line-height: 1.75; }
 
     /* Buttons */
     .btnrow{ display:flex; flex-wrap:wrap; gap:10px; margin-top:10px }
@@ -128,9 +135,8 @@
     @media (max-width: 900px){
       .hero{ height: 260px; margin-bottom: 120px }
       .header-row{ bottom: -60px; gap: 12px }
-      .header-row img{ width:120px; height:120px }
+      .header-row img{ width: 140px; height: 140px; bottom: -70px; }
       .research-tags{ padding-left: 0; font-size:1.05rem; }
-      .research-left, .research-right{ flex: 1; }
       .links-wrap{ margin-top: -40px; }  /* a bit less negative on small screens */
     }
   </style>
