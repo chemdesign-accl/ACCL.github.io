@@ -92,7 +92,24 @@
       padding-left: calc(var(--avatar) + 60px); /* avatar + gutter */
       margin-top: 5;
     }
+    .news-scroll {
+      max-height: 250px;     /* adjust to how tall you want the box */
+      overflow-y: auto;      /* adds vertical scrollbar when needed */
+      padding-right: 8px;    /* space so scrollbar doesn’t overlap text */
+    }
     
+    /* Optional: custom scrollbar style (WebKit browsers) */
+    .news-scroll::-webkit-scrollbar {
+      width: 6px;
+    }
+    .news-scroll::-webkit-scrollbar-thumb {
+      background-color: #77a106;  /* match your green accent */
+      border-radius: 3px;
+    }
+    .news-scroll::-webkit-scrollbar-track {
+      background: #f0f0f0;
+    }
+
     /* Links row: centered, even spacing */
     .links-wrap{
       margin-top: -56px;    /* keeps the chips in the seam */
@@ -191,7 +208,7 @@
       <div class="item">
         <p>
           Hi, welcome to my web-page! I am a <span style="color: var(--ink); font-weight:600;">Ph.D. candidate in Chemistry</span> (Theoretical and Computational Track) at 
-          <span style="color: var(--ink); font-weight:600;">UC San Diego</span>, where my Ph.D. studies are supported in part by the awarded <span style="color: var(--ink); font-weight:600;">Fulbright-García Robles Scholarsh</span>.
+          <span style="color: var(--ink); font-weight:600;">UC San Diego</span>, where my Ph.D. studies are supported in part by the awarded <span style="color: var(--ink); font-weight:600;">Fulbright-García Robles Scholarship</span>.
           I currently work at the 
           <span style="color: var(--ink); font-weight:600;">Amaro Lab</span> specializing in computational approaches for 
           <span style="color: var(--ink); font-weight:600;">drug discovery</span>. My work is driven by a motivation to design safer and more effective 
@@ -209,7 +226,7 @@
         <p>
           Beyond machine learning, I apply <span style="color: var(--ink); font-weight:600;">enhanced molecular simulations</span>, including 
           <span style="color: var(--ink); font-weight:600;">metadynamics</span>, 
-          <span style="color: var(--ink); font-weight:600;">Gaussian-accelerated dynamics</span>, and 
+          <span style="color: var(--ink); font-weight:600;">gaussian-accelerated dynamics</span>, and 
           <span style="color: var(--ink); font-weight:600;">free-energy calculations</span>, to probe biomolecular mechanisms with high accuracy. My Ph.D. thesis focuses on understanding how the SARS-CoV-2 helicase translocates RNA using nucleoside triphosphates (NTPs), and on developing strategies to inhibit this essential viral process.
         </p>
         <p>
@@ -219,28 +236,29 @@
         </p>
       </div>
     </section>
-
     <section>
       <h2>News</h2>
-      <ul class="tight">
-        <li>[Aug 2025] Thrilled to announce we submitted our potent helicase inhibitors (EC50 > 1 µM) to JCIM — an exciting step forward for our work!</li>
-        <li>[May 2025] What a whirlwind month. I had the honor of presenting at the 2025 DDC Symposium at UC Riverside. Energized by the discussions and feedback!</li>
-        <li>[May 2025] Excited to share that our preprint on interpretable GNNs has been submitted to <i>Digital Discovery</i> (RSC). A milestone in blending ML with drug discovery.</li>
-        <li>[May 2025] I officially passed my PhD candidacy exam!! 🎉 Feeling grateful for all the support along the way.</li>
-        <li>[Mar 2025] Presented a poster on our GNN advances at the ACS Spring Meeting (San Diego). Incredible to connect with so many brilliant minds in person!</li>
-        <li>[Feb 2025] Submitted a grant proposal to push forward our helicase inhibitor program. Fingers crossed ✨</li>
-        <li>[Jan 2025] Overjoyed that experimental validation confirmed AviDD’s SARS-CoV-2 helicase hit has nanomolar potency (EC50 280 nM)!! 🚀</li>
-        <li>[Nov 2024] Another big validation milestone: AviDD’s helicase hit shows strong potency (EC50 > 500 nM). Momentum is building!</li>
-        <li>[May 2024] Exciting lab results: AviDD’s helicase hit demonstrates micromolar potency (EC50 ~ µM). Each step gets us closer!</li>
-        <li>[Jan 2024] Experimental validation shows EC50 < 10 µM for one of our hits. Steadily climbing towards potent inhibitors!</li>
-        <li>[Nov 2023] Early validation results reveal EC50 < 25 µM — a promising foundation to refine further. Optimistic for what’s ahead.</li>
-        <li>[May 2023] Overjoyed to officially join the <b>Amaro Lab</b>! Looking forward to amazing collaborations and discoveries. 💡</li>
-        <li>[Mar 2023] Wrapped up Statistical Mechanics and finished TA’ing Thermodynamics. Ready for a well-earned holiday break! ☀️</li>
-        <li>[Sep 2022] Super excited to have started my PhD in Chemistry at UCSD — Go Tritons!! 🐬</li>
-        <li>[Aug 2022] My first-ever publication has been accepted to <i>Journal of Biomolecular Structure & Dynamics</i> — such a proud moment!</li>
-        <li>[Jul 2022] Closing a wonderful chapter at Biotix. Forever grateful to the Quality team — I already miss you! 💙</li>
-        <li>[Jul 2021] Honored and humbled to be awarded the Fulbright-García Robles Scholarship for STEM studies in the US!! 🌎✨</li>
-      </ul>
+      <div class="news-scroll">
+        <ul class="tight">
+          <li>[Aug 2025] Thrilled to announce we submitted our potent helicase inhibitors (EC50 > 1 µM) to JCIM — an exciting step forward for our work!</li>
+          <li>[May 2025] What a whirlwind month. I had the honor of presenting at the 2025 DDC Symposium at UC Riverside. Energized by the discussions and feedback!</li>
+          <li>[May 2025] Excited to share that our preprint on interpretable GNNs has been submitted to <i>Digital Discovery</i> (RSC). A milestone in blending ML with drug discovery.</li>
+          <li>[May 2025] I officially passed my PhD candidacy exam!! 🎉 Feeling grateful for all the support along the way.</li>
+          <li>[Mar 2025] Presented a poster on our GNN advances at the ACS Spring Meeting (San Diego). Incredible to connect with so many brilliant minds in person!</li>
+          <li>[Feb 2025] Submitted a grant proposal to push forward our helicase inhibitor program. Fingers crossed ✨</li>
+          <li>[Jan 2025] Overjoyed that experimental validation confirmed AviDD’s SARS-CoV-2 helicase hit has nanomolar potency (EC50 280 nM)!! 🚀</li>
+          <li>[Nov 2024] Another big validation milestone: AviDD’s helicase hit shows strong potency (EC50 > 500 nM). Momentum is building!</li>
+          <li>[May 2024] Exciting lab results: AviDD’s helicase hit demonstrates micromolar potency (EC50 ~ µM). Each step gets us closer!</li>
+          <li>[Jan 2024] Experimental validation shows EC50 < 10 µM for one of our hits. Steadily climbing towards potent inhibitors!</li>
+          <li>[Nov 2023] Early validation results reveal EC50 < 25 µM — a promising foundation to refine further. Optimistic for what’s ahead.</li>
+          <li>[May 2023] Overjoyed to officially join the <b>Amaro Lab</b>! Looking forward to amazing collaborations and discoveries. 💡</li>
+          <li>[Mar 2023] Wrapped up Statistical Mechanics and finished TA’ing Thermodynamics. Ready for a well-earned holiday break! ☀️</li>
+          <li>[Sep 2022] Super excited to have started my PhD in Chemistry at UCSD — Go Tritons!! 🐬</li>
+          <li>[Aug 2022] My first-ever publication has been accepted to <i>Journal of Biomolecular Structure & Dynamics</i> — such a proud moment!</li>
+          <li>[Jul 2022] Closing a wonderful chapter at Biotix. Forever grateful to the Quality team — I already miss you! 💙</li>
+          <li>[Jul 2021] Honored and humbled to be awarded the Fulbright-García Robles Scholarship for STEM studies in the US!! 🌎✨</li>
+        </ul>
+      </div>
     </section>
 
     <section>
