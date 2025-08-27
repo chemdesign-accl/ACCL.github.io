@@ -12,8 +12,8 @@
       --chip:#77a106; --outline:#bbcfcc;
 
       /* Thumb sizing (adjust here if you want bigger/smaller images) */
-      --thumbW: 250px;
-      --thumbH: 210px;
+      --thumbW: 320px;          /* column width for the image */
+      --thumbRatio: 4 / 3;      /* 16/9 = flatter, 4/3 = a bit taller */
     }
 
     *{box-sizing:border-box}
@@ -58,10 +58,11 @@
 
     .thumb{
       width:100%;
-      height:var(--thumbH);   /* uniform height for all thumbs */
+      aspect-ratio: var(--thumbRatio); /* <- this makes them rectangular */
+      height:auto;   /* uniform height for all thumbs */
       object-fit:cover;       /* fill the box nicely, cropping if needed */
       display:block;
-      border-radius:10px;
+      border-radius:12px;
       box-shadow:0 1px 10px rgba(0,0,0,.06);
     }
 
