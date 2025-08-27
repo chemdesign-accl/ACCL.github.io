@@ -58,41 +58,57 @@
       border: 1px solid var(--outline);
       font-weight: 600;
       cursor: pointer;
-      transition: background 0.2s ease;
+      position: relative;
     }
-    .chip.email:hover {
+    .chip.email i { color: var(--ink); }
+    .chip.email .copied {
+      position: absolute;
+      right: -6px;
+      top: -10px;
       background: var(--accent);
       color: #23310a;
+      border: 1px solid #cfe96b;
+      padding: 2px 6px;
+      border-radius: 8px;
+      font-size: 12px;
+      opacity: 0;
+      transform: translateY(-4px);
+      transition: opacity .2s ease, transform .2s ease;
+      pointer-events: none;
+    }
+    .chip.email.copied .copied {
+      opacity: 1;
+      transform: translateY(0);
     }
 
+
     /* Row container for photo + tags */
-    .header-row {
-      display: flex;
-      align-items: center;
-      justify-content: flex-start;   /* photo flush left */
-      gap: 24px;
+    .header-row{
       position: absolute;
-      bottom: -40px;   /* LIFTED UP from -70px */
+      bottom: -60px;               /* seam overlap */
       left: 50%;
       transform: translateX(-50%);
-      width: 100%;     /* let the row stretch across */
+      width: min(1100px, 92vw);    /* keep nicely centered */
+      display: grid;
+      grid-template-columns: var(--avatar) 1fr;
+      align-items: end;
+      column-gap: 28px;
       padding: 0 16px;
+      z-index: 3;
     }
+    
+    /* Avatar: no absolute positioning */
     .header-row img{
-      position: absolute;
-      left: 10%;
-      transform: translateX(-50%);
-      bottom: calc(var(--avatar) * -0.5);     /* sits between hero & green row */
       width: var(--avatar);
       height: var(--avatar);
       border-radius: 50%;
-      object-position: 75% 5%;
       object-fit: cover;
+      object-position: 75% 5%;     /* your current framing */
       border: 4px solid #fff;
       box-shadow: 0 8px 22px rgba(0,0,0,.25);
       background:#fff;
-      z-index: 3;
     }
+
     
     /* Push the tags to the RIGHT so they don't overlap the photo */
     .research-tags{
@@ -183,10 +199,15 @@
   <!-- nav chips below the seam -->
   <div class="links-wrap">
     <nav class="links">
-      <div class="chip.email">
-        <i class="fa-solid fa-envelope"></i> acastanedaleautaud@ucsd.edu
+      <div class="chip email" role="button" tabindex="0"
+           aria-label="Copy email to clipboard"
+           onclick="copyEmail(this)"
+           onkeydown="if(event.key==='Enter'||event.key===' '){copyEmail(this)}">
+        <i class="fa-solid fa-envelope"></i>
+        <span class="email-text">acastanedaleautaud@ucsd.edu</span>
+        <span class="copied" aria-hidden="true">Copied!</span>
       </div>
-  
+
       <a class="chip" href="https://github.com/chemdesign-accl" target="_blank" rel="noopener">
         <i class="fa-brands fa-github"></i> GitHub
       </a>
@@ -281,5 +302,23 @@
               Unsplash
             </a>
   </footer>
+  <script>
+    function copyEmail(el){
+      const text = el.querySelector('.email-text')?.textContent?.trim() || 'acastanedaleautaud@ucsd.edu';
+      if (navigator.clipboard && window.isSecureContext) {
+        navigator.clipboard.writeText(text);
+      } else {
+        const ta = document.createElement('textarea');
+        ta.value = text;
+        document.body.appendChild(ta);
+        ta.select();
+        document.execCommand('copy');
+        document.body.removeChild(ta);
+      }
+      el.classList.add('copied');
+      setTimeout(()=>el.classList.remove('copied'), 1200);
+    }
+  </script>
+
 </body>
 </html>
