@@ -52,6 +52,18 @@
       color:#fff; font-size:3rem; font-weight:700; letter-spacing:.5px;
       margin:0; text-shadow:0 2px 10px rgba(0,0,0,.65);
     }
+    .chip.email {
+      background: #fff;
+      color: var(--brand);
+      border: 1px solid var(--outline);
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.2s ease;
+    }
+    .chip.email:hover {
+      background: var(--accent);
+      color: #23310a;
+    }
 
     /* Row container for photo + tags */
     .header-row {
@@ -183,7 +195,9 @@
   <!-- nav chips below the seam -->
   <div class="links-wrap">
     <nav class="links">
-      <div class="chip email" onclick="copyEmail()">acastanedaleautaud@ucsd.edu</div>
+      <div class="chip email">
+        <i class="fa-solid fa-envelope"></i> acastanedaleautaud@ucsd.edu
+      </div>
   
       <a class="chip" href="https://github.com/chemdesign-accl" target="_blank" rel="noopener">
         <i class="fa-brands fa-github"></i> GitHub
@@ -279,5 +293,12 @@
               Unsplash
             </a>
   </footer>
+<script>
+  function copyEmail() {
+    navigator.clipboard.writeText("acastanedaleautaud@ucsd.edu");
+    alert("Email copied to clipboard!");
+  }
+</script>
+
 </body>
 </html>
