@@ -110,18 +110,6 @@
       padding-right: 8px;    /* space so scrollbar doesn’t overlap text */
     }
     
-    /* Optional: custom scrollbar style (WebKit browsers) */
-    .news-scroll::-webkit-scrollbar {
-      width: 6px;
-    }
-    .news-scroll::-webkit-scrollbar-thumb {
-      background-color: #77a106;  /* match your green accent */
-      border-radius: 3px;
-    }
-    .news-scroll::-webkit-scrollbar-track {
-      background: #f0f0f0;
-    }
-
     /* Links row: centered, even spacing */
     .links-wrap{
       margin-top: -56px;    /* keeps the chips in the seam */
@@ -195,7 +183,7 @@
   <!-- nav chips below the seam -->
   <div class="links-wrap">
     <nav class="links">
-      <div class="chip email">
+      <div class="chip">
         <i class="fa-solid fa-envelope"></i> acastanedaleautaud@ucsd.edu
       </div>
   
@@ -293,12 +281,5 @@
               Unsplash
             </a>
   </footer>
-<script>
-  function copyEmail() {
-    navigator.clipboard.writeText("acastanedaleautaud@ucsd.edu");
-    alert("Email copied to clipboard!");
-  }
-</script>
-
 </body>
 </html>
